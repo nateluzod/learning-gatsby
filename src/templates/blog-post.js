@@ -3,8 +3,8 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
 
-import Bio from '../components/Bio'
-import { rhythm, scale } from '../utils/typography'
+import '../css/tailwind.css'
+
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -15,33 +15,15 @@ class BlogPostTemplate extends React.Component {
     return (
       <div>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        <h1>{post.frontmatter.title}</h1>
+        <h1
+          className="text-3xl mb-4"
+          >{post.frontmatter.title}</h1>
         <p
-          style={{
-            ...scale(-1 / 5),
-            display: 'block',
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
+          className="text-sm mb-4 block text-grey">
           {post.frontmatter.date}
         </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
-
+        <div className="wysiwyg" dangerouslySetInnerHTML={{ __html: post.html }} />
         <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            listStyle: 'none',
-            padding: 0,
-          }}
         >
           {previous && (
             <li>

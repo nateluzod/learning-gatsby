@@ -4,7 +4,6 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 import Bio from '../components/Bio'
-import { rhythm } from '../utils/typography'
 
 class BlogIndex extends React.Component {
   render() {
@@ -14,22 +13,27 @@ class BlogIndex extends React.Component {
     return (
       <div>
         <Helmet title={siteTitle} />
-        <Bio />
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
           return (
-            <div key={node.fields.slug}>
+            <div 
+              className="mt-6 mb-6"
+              key={node.fields.slug}>
               <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
+                className="font-sans text-2xl mb-2 no-underline"
               >
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                <Link 
+                  className="text-blue-dark hover:text-red no-underline"
+                  to={node.fields.slug}>
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+              <small className="text-xs text-grey-dark no-underline mb-1 block">
+                {node.frontmatter.date}
+              </small>
+              <p 
+                className="text-base leading-normal text-grey-darkest"
+                dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </div>
           )
         })}

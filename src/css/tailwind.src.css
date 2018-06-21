@@ -1,0 +1,10 @@
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+.wysiwyg p {
+    @apply .leading-normal;
+    @apply .text-base;
+    @apply .text-grey-darkest;
+    @apply .mb-4;
+}
